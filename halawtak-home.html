@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halawtak | حلاوتك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#E8D9BB;
+    --cream-deep:#D6C296;
+    --ink:#20423E;
+    --ink-soft:#5C7A75;
+    --mint:#8FD1C9;
+    --mint-deep:#3F958A;
+    --mint-pale:#F1E9D6;
+    --honey:#B8792E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{ height:100%; }
+  body{
+    min-height:100dvh;
+    background:
+      radial-gradient(circle at 18% 10%, rgba(143,209,201,0.18), transparent 42%),
+      radial-gradient(circle at 88% 88%, rgba(184,121,46,0.12), transparent 48%),
+      var(--cream);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+  }
+  .en{ font-family:'Inter', sans-serif; direction:ltr; }
+
+  .page{
+    width:100%;
+    max-width:420px;
+    text-align:center;
+  }
+
+  .logo-wrap{
+    width:128px; height:128px; margin:0 auto 22px;
+    border-radius:50%; overflow:hidden;
+    box-shadow:0 0 0 5px var(--cream), 0 0 0 6px var(--mint), 0 14px 30px rgba(32,66,62,0.15);
+  }
+  .logo-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  h1.brand{
+    font-family:'Aref Ruqaa', serif; font-weight:700;
+    font-size:clamp(2.1rem, 7vw, 2.8rem); color:var(--ink); line-height:1;
+  }
+  .brand-en{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:0.85rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mint-deep); margin-top:6px;
+  }
+  .tagline{
+    margin-top:14px; font-size:0.92rem; color:var(--ink-soft);
+  }
+  .tagline .en{ display:block; font-size:0.75rem; margin-top:2px; }
+
+  .drip{ width:64px; height:24px; margin:24px auto 0; display:block; }
+
+  .menu-btn{
+    display:block;
+    margin:30px auto 0;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--cream);
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:999px;
+    font-family:'Tajawal', sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    box-shadow:0 12px 28px rgba(32,66,62,0.22);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .menu-btn:hover{ transform:translateY(-2px); box-shadow:0 16px 34px rgba(32,66,62,0.28); }
+  .menu-btn .en{
+    display:block; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--mint); margin-top:3px; font-weight:600;
+  }
+
+  .socials{
+    display:flex; justify-content:center; gap:16px;
+    margin-top:34px;
+  }
+  .social{
+    width:50px; height:50px; border-radius:50%;
+    background:#fff; border:1px solid var(--mint);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink); text-decoration:none;
+    box-shadow:0 8px 18px rgba(32,66,62,0.08);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .social:hover{ background:var(--mint); transform:translateY(-2px); }
+  .social svg{ width:22px; height:22px; }
+
+  .socials-note{
+    margin-top:10px; font-size:0.68rem; color:var(--ink-soft); opacity:0.75;
+  }
+
+  footer{ margin-top:40px; }
+  footer .ar-fw{ font-family:'Aref Ruqaa', serif; font-size:1rem; color:var(--mint-deep); }
+  footer .en{ display:block; font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; color:var(--ink-soft); margin-top:3px; }
+
+  @media (max-width:360px){
+    .socials{ gap:12px; }
+    .social{ width:46px; height:46px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="logo-wrap"><img src="/images/logo.png" alt="Halawtak logo"></div>
+    <h1 class="brand">حَلاوتك</h1>
+    <div class="brand-en">Halawtak</div>
+    <p class="tagline">حلويات ومشروبات منعشة<span class="en">Sweets &amp; drinks, made fresh</span></p>
+
+    <svg class="drip" viewBox="0 0 64 24"><path id="heroDripPath" fill="#8FD1C9"/></svg>
+
+    <a class="menu-btn" href="halawtak-menu.html">
+      عرض القائمة
+      <span class="en">View Menu</span>
+    </a>
+
+    <div class="socials">
+      <a class="social" href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="social" href="#" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2.5 2 4.5 4.5 4.5"/></svg>
+      </a>
+      <a class="social" href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.2l.8-3H14V9z"/></svg>
+      </a>
+    </div>
+    <p class="socials-note">روابط مؤقتة — سيتم تحديثها لاحقاً<span class="en">Placeholder links — to be added later</span></p>
+
+    <footer>
+      <div class="ar-fw">صحتين</div>
+      <span class="en">Halawtak</span>
+    </footer>
+  </div>
+
+<script>
+function dripPath(width, height, count){
+  const segW = width / count;
+  let bottom = "";
+  for(let i=count-1;i>=0;i--){
+    const x0 = i*segW, x1 = x0 + segW/2, x2 = x0 + segW;
+    const wobble = (Math.sin(i*2.3)+1)/2;
+    const len = height*0.35 + wobble*height*0.65;
+    bottom += `L${x2},0 C${x1+segW*0.12},${len} ${x1-segW*0.12},${len} ${x1},${len*0.98} C${x1-segW*0.28},${len} ${x0+segW*0.05},0 ${x0},0 `;
+  }
+  return `M0,0 L${width},0 ` + bottom + "Z";
+}
+document.getElementById('heroDripPath').setAttribute('d', dripPath(64,20,4));
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halawtak — امسح القائمة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EC;
+    --cream-deep:#F0E6D2;
+    --ink:#20423E;
+    --ink-soft:#5C7A75;
+    --mint:#8FD1C9;
+    --mint-deep:#3F958A;
+    --mint-pale:#E7F5F3;
+    --honey:#B8792E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{ height:100%; }
+  body{
+    min-height:100dvh;
+    background:#DCE4E2; /* neutral surround on screen, so the A5 sheet edge is visible */
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 16px;
+  }
+  .a5-page{
+    background:
+      radial-gradient(circle at 18% 10%, rgba(143,209,201,0.16), transparent 42%),
+      radial-gradient(circle at 88% 90%, rgba(184,121,46,0.10), transparent 48%),
+      var(--cream);
+  }
+
+  .en{ font-family:'Inter', sans-serif; direction:ltr; }
+
+  .standee{
+    position:relative;
+    width:100%;
+    max-width:400px;
+    padding:40px 32px 34px;
+    text-align:center;
+  }
+
+  .logo-wrap{
+    width:100px; height:100px; margin:0 auto 18px;
+    border-radius:50%; overflow:hidden;
+    box-shadow:0 0 0 5px #fff, 0 0 0 6px var(--mint), 0 10px 24px rgba(32,66,62,0.14);
+  }
+  .logo-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  h1.brand{
+    font-family:'Aref Ruqaa', serif; font-weight:700;
+    font-size:2rem; color:var(--ink); line-height:1;
+  }
+  .brand-en{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:0.78rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mint-deep); margin-top:4px;
+  }
+
+  .scan-heading{ margin-top:24px; }
+  .scan-heading .ar{
+    font-family:'Aref Ruqaa', serif; font-weight:700;
+    font-size:1.4rem; color:var(--ink); display:block;
+  }
+  .scan-heading .en{
+    display:block; margin-top:4px;
+    font-size:0.75rem; font-weight:700; letter-spacing:5px;
+    text-transform:uppercase; color:var(--honey);
+  }
+
+  /* QR card with drip frame */
+  .qr-frame{
+    position:relative;
+    margin:26px auto 0;
+    width:min(230px, 68vw);
+  }
+  .qr-card{
+    background:var(--mint-pale);
+    border:1px solid var(--mint);
+    border-radius:20px;
+    padding:16px;
+    box-shadow:0 10px 24px rgba(32,66,62,0.08);
+    position:relative;
+    z-index:2;
+  }
+  .qr-card img{ width:100%; height:auto; display:block; border-radius:6px; background:#fff; }
+  .qr-drip{
+    position:absolute; left:0; right:0; bottom:-13px;
+    width:100%; height:24px; z-index:1;
+  }
+
+  .instruction{
+    margin-top:28px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  .instruction .en{ display:block; font-size:0.7rem; margin-top:3px; color:var(--ink-soft); opacity:0.75; }
+
+  .divider{ width:56px; height:1px; background:var(--cream-deep); margin:22px auto; }
+
+  .tagline{ font-family:'Aref Ruqaa', serif; font-size:1rem; color:var(--mint-deep); }
+  .tagline .en{ display:block; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--ink-soft); margin-top:3px; }
+
+  @media (max-width:380px){
+    .standee{ padding:32px 22px 26px; }
+  }
+
+  /* A5 portrait: 148mm x 210mm */
+  @page{ size:148mm 210mm; margin:0; }
+  @media print{
+    html,body{ width:148mm; height:210mm; }
+    body{ background:var(--cream); -webkit-print-color-adjust:exact; print-color-adjust:exact; padding:0; }
+    .a5-preview{ width:148mm; min-height:210mm; box-shadow:none; }
+    .standee{ width:118mm; max-width:118mm; padding:14mm 10mm; }
+  }
+  /* on-screen preview sized to A5 proportions so what you see matches print */
+  .a5-preview{
+    width:148mm; min-height:210mm;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--cream);
+    box-shadow:0 0 0 1px var(--cream-deep), 0 30px 60px rgba(32,66,62,0.15);
+  }
+</style>
+</head>
+<body>
+  <div class="a5-preview a5-page">
+  <div class="standee">
+    <div class="logo-wrap"><img src="/images/logo.png" alt="Halawtak logo"></div>
+    <h1 class="brand">حَلاوتك</h1>
+    <div class="brand-en">Halawtak</div>
+
+    <div class="scan-heading">
+      <span class="ar">امسح لعرض القائمة</span>
+      <span class="en">Scan Menu</span>
+    </div>
+
+    <div class="qr-frame">
+      <div class="qr-card">
+        <img src="assets/halawtak-qr.png" alt="QR code to Halawtak digital menu">
+      </div>
+      <svg class="qr-drip" viewBox="0 0 230 22" preserveAspectRatio="none"><path id="qrDripPath" fill="#ffffff"/></svg>
+    </div>
+
+    <p class="instruction">وجّه كاميرا هاتفك نحو الرمز<span class="en">Point your phone camera at the code</span></p>
+
+    <div class="divider"></div>
+    <div class="tagline">صحتين<span class="en">Halawtak · Sweets &amp; Drinks</span></div>
+  </div>
+  </div>
+
+<script>
+function dripPath(width, height, count){
+  const segW = width / count;
+  let bottom = "";
+  for(let i=count-1;i>=0;i--){
+    const x0 = i*segW, x1 = x0 + segW/2, x2 = x0 + segW;
+    const wobble = (Math.sin(i*2.3)+1)/2;
+    const len = height*0.35 + wobble*height*0.65;
+    bottom += `L${x2},0 C${x1+segW*0.12},${len} ${x1-segW*0.12},${len} ${x1},${len*0.98} C${x1-segW*0.28},${len} ${x0+segW*0.05},0 ${x0},0 `;
+  }
+  return `M0,0 L${width},0 ` + bottom + "Z";
+}
+document.getElementById('qrDripPath').setAttribute('d', dripPath(230, 18, 6));
+</script>
+</body>
+</html>
