@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halawtak | حلاوتك — قائمة الحلويات والمشروبات</title>
+<link rel="icon" href="/images/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E8D9BB;
+    --paper-deep:#D6C296;
+    --ink:#20423E;
+    --ink-soft:#5C7A75;
+    --mint:#8FD1C9;
+    --mint-deep:#3F958A;
+    --honey:#B8792E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    padding-bottom:80px;
+  }
+  .en{ font-family:'Inter', sans-serif; direction:ltr; }
+
+  /* ---------- HERO ---------- */
+  .hero{ text-align:center; padding:56px 20px 20px; }
+  .logo-wrap{
+    width:110px; height:110px; margin:0 auto 20px;
+    border-radius:50%; overflow:hidden;
+    box-shadow:0 0 0 5px var(--paper), 0 0 0 6px var(--mint), 0 8px 24px rgba(32,66,62,0.12);
+  }
+  .logo-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero h1{
+    font-family:'Aref Ruqaa', serif; font-weight:700;
+    font-size:clamp(2rem, 6vw, 3rem); color:var(--ink);
+  }
+  .hero .en-title{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(0.95rem, 2.4vw, 1.2rem); letter-spacing:3px;
+    text-transform:uppercase; color:var(--mint-deep); margin-top:4px;
+  }
+  .hero .tagline{ margin-top:12px; font-size:0.92rem; color:var(--ink-soft); }
+  .hero .tagline .en{ display:block; font-size:0.75rem; margin-top:2px; letter-spacing:0.5px; }
+
+  .drip-flourish{ width:64px; height:24px; margin:22px auto 0; display:block; }
+
+  /* ---------- TABLE OF CONTENTS (not sticky, plain text) ---------- */
+  .toc{
+    max-width:640px; margin:26px auto 0; padding:0 24px;
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    line-height:2.1;
+  }
+  .toc a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px dotted var(--ink-soft);
+    padding-bottom:1px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .toc a:hover{ color:var(--honey); border-color:var(--honey); }
+  .toc .sep{ color:var(--mint-deep); margin:0 10px; }
+
+  main{ max-width:640px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- CATEGORY ---------- */
+  section.cat{ margin-top:52px; scroll-margin-top:24px; }
+  section.cat:first-of-type{ margin-top:44px; }
+
+  .cat-head{ text-align:center; margin-bottom:22px; }
+  .cat-head .cat-ar{
+    font-family:'Aref Ruqaa', serif; font-weight:700;
+    font-size:1.7rem; color:var(--ink); display:block;
+  }
+  .cat-head .cat-en{
+    font-family:'Fraunces', serif; font-style:italic; font-size:0.78rem;
+    letter-spacing:2.5px; text-transform:uppercase; color:var(--mint-deep);
+    display:block; margin-top:2px;
+  }
+  .cat-head .cat-note{ font-size:0.72rem; color:var(--ink-soft); margin-top:4px; display:block; }
+  .cat-head svg{ width:46px; height:18px; margin:10px auto 0; display:block; }
+
+  .item{
+    display:flex; align-items:flex-end; gap:8px;
+    padding:10px 0;
+    border-bottom:1px solid var(--paper-deep);
+  }
+  .item:last-child{ border-bottom:none; }
+  .item-name{ display:flex; flex-direction:column; gap:0px; flex:0 0 auto; line-height:1.15;  text-align:right; }
+  .item-name .ar{ font-size:1.02rem; font-weight:500; color:var(--ink); }
+  .item-name .en{ font-size:0.7rem; color:var(--ink-soft); letter-spacing:0.4px; margin-top:2px; }
+  .leader{ flex:1; align-self:flex-end; border-bottom:1px dotted var(--paper-deep); margin:0 2px 5px; min-width:16px; }
+  .item-price{
+    flex:0 0 auto;
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    font-variant-numeric:oldstyle-nums;
+    font-size:1.15rem; color:var(--honey);
+    direction:ltr; line-height:1;
+    white-space:nowrap;
+  }
+  .item-price .cur{ font-size:0.62rem; font-style:normal; letter-spacing:1px; color:var(--ink-soft); margin-left:3px; }
+
+  /* base + toppings (waffle / fattoush) */
+  .base-item{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--mint);
+  }
+  .base-item .item-name .ar{ font-size:1.2rem; font-weight:700; }
+  .base-item .item-price{ font-size:1.3rem; }
+
+  .topping-label{
+    font-size:0.72rem; color:var(--ink-soft); letter-spacing:1.5px;
+    text-transform:uppercase; margin-bottom:12px; text-align:center;
+  }
+  .toppings{ display:grid; grid-auto-flow:column; grid-template-columns:1fr 1fr; gap:8px 20px; }
+  .topping-row{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    font-size:0.85rem; padding:4px 0;
+  }
+  .topping-row .ar{ color:var(--ink); }
+  .topping-row .price{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    color:var(--honey); direction:ltr; font-size:0.9rem;
+  }
+
+  footer{ text-align:center; margin-top:60px; color:var(--ink-soft); }
+  footer .ar-fw{ font-family:'Aref Ruqaa', serif; font-size:1.25rem; color:var(--ink); }
+  footer .en{ display:block; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
+
+  /* ---------- back-to-top (quiet, appears on scroll) ---------- */
+  #toTop{
+    position:fixed; right:18px; bottom:18px;
+    width:42px; height:42px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--mint);
+    color:var(--mint-deep); font-size:1.1rem;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 18px rgba(32,66,62,0.14);
+    opacity:0; pointer-events:none; transform:translateY(6px);
+    transition:opacity .2s ease, transform .2s ease;
+    cursor:pointer; text-decoration:none;
+  }
+  #toTop.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
+
+  @media (max-width:420px){
+    .toppings{ grid-auto-flow:row; grid-template-columns:1fr; grid-template-rows:none; }
+    .toc{ line-height:2.4; }
+  }
+
+  :focus-visible{ outline:2px solid var(--honey); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="logo-wrap"><img src="/images/logo.png" alt="Halawtak logo"></div>
+    <h1>حَلاوتك</h1>
+    <div class="en-title">Halawtak</div>
+    <p class="tagline">حلويات ومشروبات منعشة<span class="en">Sweets &amp; drinks, made fresh</span></p>
+    <svg class="drip-flourish" viewBox="0 0 64 24"><path id="heroDrip" fill="#8FD1C9"/></svg>
+  </div>
+
+  <p class="toc" id="toc"></p>
+
+  <main id="menu"></main>
+
+  <footer>
+    <div class="ar-fw">صحتين</div>
+    <span class="en">Halawtak · Made with love</span>
+  </footer>
+
+  <a href="#top" id="toTop" aria-label="Back to top">↑</a>
+
+<script>
+const DATA = [
+  { id:"qashtouta-milk", ar:"قشطوطة برز بحليب", en:"Qashtouta with Rice & Milk", items:[
+    {ar:"قشطوطة", en:"Classic Qashtouta", price:"30"},
+    {ar:"قشطوطة لوتس", en:"Lotus Qashtouta", price:"39"},
+    {ar:"قشطوطة أوريو", en:"Oreo Qashtouta", price:"39"},
+    {ar:"قشطوطة مكسرات", en:"Nut Qashtouta", price:"44"},
+    {ar:"قشطوطة كراميل", en:"Caramel Qashtouta", price:"39"},
+    {ar:"قشطوطة شوكولاتة", en:"Chocolate Qashtouta", price:"39"},
+    {ar:"قشطوطة شوكولاتة دبي", en:"Dubai Chocolate Qashtouta", price:"44"},
+    {ar:"قشطوطة بالفستق", en:"Pistachio Qashtouta", price:"40"},
+    {ar:"قشطوطة شوكولاتة بيضاء", en:"White Chocolate Qashtouta", price:"39"},
+    {ar:"قشطوطة مع بوظة", en:"Ice Cream Qashtouta", price:"44"},
+    {ar:"قشطوطة سبيشل", en:"Special Qashtouta", price:"48"},
+    {ar:"قشطوطة بجوز البيكان", en:"Pecan Qashtouta", price:"39"},
+    {ar:"قشطوطة بجوز الهند", en:"Coconut Qashtouta", price:"39"},
+    {ar:"قشطوطة بالمانجو", en:"Mango Qashtouta", price:"39"},
+    {ar:"قشطوطة بالموز", en:"Banana Qashtouta", price:"39"},
+    {ar:"قشطوطة بالفراولة", en:"Strawberry Qashtouta", price:"39"},
+    {ar:"قشطوطة بالكيوي", en:"Kiwi Qashtouta", price:"39"},
+    {ar:"قشطوطة بفاكهة التنين", en:"Dragon Fruit Qashtouta", price:"39"},
+    {ar:"قشطوطة بالذرة", en:"Corn Qashtouta", price:"39"},
+    {ar:"قشطوطة ميكس فواكه", en:"Mixed Fruit Qashtouta", price:"45"},
+  ]},
+  { id:"qashtouta-plain", ar:"قشطوطة سادة", en:"Plain Qashtouta", items:[
+    {ar:"قشطوطة", en:"Classic Qashtouta", price:"25"},
+    {ar:"قشطوطة لوتس", en:"Lotus Qashtouta", price:"34"},
+    {ar:"قشطوطة أوريو", en:"Oreo Qashtouta", price:"34"},
+    {ar:"قشطوطة مكسرات", en:"Nut Qashtouta", price:"39"},
+    {ar:"قشطوطة كراميل", en:"Caramel Qashtouta", price:"34"},
+    {ar:"قشطوطة شوكولاتة", en:"Chocolate Qashtouta", price:"34"},
+    {ar:"قشطوطة شوكولاتة دبي", en:"Dubai Chocolate Qashtouta", price:"39"},
+    {ar:"قشطوطة بالفستق", en:"Pistachio Qashtouta", price:"35"},
+    {ar:"قشطوطة شوكولاتة بيضاء", en:"White Chocolate Qashtouta", price:"34"},
+    {ar:"قشطوطة مع بوظة", en:"Ice Cream Qashtouta", price:"39"},
+    {ar:"قشطوطة سبيشل", en:"Special Qashtouta", price:"43"},
+    {ar:"قشطوطة بجوز البيكان", en:"Pecan Qashtouta", price:"34"},
+    {ar:"قشطوطة بجوز الهند", en:"Coconut Qashtouta", price:"34"},
+    {ar:"قشطوطة بالمانجو", en:"Mango Qashtouta", price:"34"},
+    {ar:"قشطوطة بالموز", en:"Banana Qashtouta", price:"34"},
+    {ar:"قشطوطة بالفراولة", en:"Strawberry Qashtouta", price:"34"},
+    {ar:"قشطوطة بالكيوي", en:"Kiwi Qashtouta", price:"34"},
+    {ar:"قشطوطة بفاكهة التنين", en:"Dragon Fruit Qashtouta", price:"34"},
+    {ar:"قشطوطة بالذرة", en:"Corn Qashtouta", price:"34"},
+    {ar:"قشطوطة ميكس فواكه", en:"Mixed Fruit Qashtouta", price:"40"},
+  ]},
+  { id:"fattoush", ar:"فتوش", en:"Fattoush Cake", customizable:true,
+    base:{ar:"فتوش", en:"Fattoush Cake", price:"18"},
+    toppingsLabel:"إضافات — Toppings",
+    toppings:[
+      {ar:"بوظة (داخل الكيكة)", en:"Ice Cream", price:"+7"},
+      {ar:"لوتس", en:"Lotus", price:"+6"},
+      {ar:"أوريو", en:"Oreo", price:"+6"},
+      {ar:"فستق", en:"Pistachio", price:"+6"},
+      {ar:"شوكولاتة بيضاء", en:"White Chocolate", price:"+6"},
+      {ar:"شوكولاتة بالحليب", en:"Milk Chocolate", price:"+6"},
+      {ar:"كريمة", en:"Whipped Cream", price:"+6"},
+      {ar:"مانجو", en:"Mango", price:"+6"},
+      {ar:"موز", en:"Banana", price:"+6"},
+      {ar:"فراولة", en:"Strawberry", price:"+6"},
+      {ar:"كيوي", en:"Kiwi", price:"+6"},
+      {ar:"فاكهة التنين", en:"Dragon Fruit", price:"+6"},
+    ]
+  },
+  { id:"waffle", ar:"وافل", en:"Waffles", customizable:true,
+    base:{ar:"وافل", en:"Classic Waffle", price:"18"},
+    toppingsLabel:"إضافات — Toppings",
+    toppings:[
+      {ar:"شوكولاتة بالحليب", en:"Milk Chocolate", price:"+6"},
+      {ar:"صوص الكراميل", en:"Caramel Sauce", price:"+6"},
+      {ar:"صوص الفستق", en:"Pistachio Sauce", price:"+6"},
+      {ar:"بوظة فانيلا", en:"Vanilla Ice Cream", price:"+6"},
+      {ar:"بوظة عربية", en:"Arabic Ice Cream", price:"+6"},
+      {ar:"موز", en:"Banana", price:"+6"},
+      {ar:"فراولة", en:"Strawberry", price:"+6"},
+      {ar:"كيوي", en:"Kiwi", price:"+6"},
+      {ar:"توت أزرق", en:"Blueberries", price:"+6"},
+      {ar:"توت أسود", en:"Blackberries", price:"+6"},
+      {ar:"توت أحمر", en:"Raspberries", price:"+6"},
+    ]
+  },
+  { id:"cocktails", ar:"كوكتيل", en:"Cocktails", items:[
+    {ar:"فراولة", en:"Strawberry", price:"25"},
+    {ar:"استوائي", en:"Tropical", price:"28"},
+    {ar:"توت أزرق", en:"Blueberry", price:"30"},
+    {ar:"أفوكادو", en:"Avocado", price:"32"},
+    {ar:"فاكهة التنين", en:"Dragon Fruit", price:"35"},
+    {ar:"باشن موهيتو", en:"Passion Mojito", price:"30"},
+    {ar:"بينا كولادا", en:"Piña Colada", price:"35"},
+  ]},
+  { id:"icecream", ar:"مثلجات", en:"Ice Cream", items:[
+    {ar:"فانيلا", en:"Vanilla", price:"11"},
+    {ar:"شوكولاتة", en:"Chocolate", price:"11"},
+    {ar:"فاكهة التنين", en:"Dragon Fruit", price:"16"},
+    {ar:"فستق", en:"Pistachio", price:"18"},
+    {ar:"بوظة عربية", en:"Arabic Ice Cream", price:"20"},
+  ]},
+  { id:"icedcoffee", ar:"قهوة باردة", en:"Iced Coffee", items:[
+    {ar:"آيس لاتيه", en:"Iced Latte", price:"25"},
+    {ar:"آيس موكا نوتيلا", en:"Iced Nutella Mocha", price:"35"},
+    {ar:"آيس لاتيه لوتس", en:"Iced Lotus Latte", price:"35"},
+    {ar:"آيس لاتيه توت أزرق", en:"Iced Blueberry Latte", price:"35"},
+    {ar:"آيس لاتيه بالفستق", en:"Iced Pistachio Latte", price:"35"},
+    {ar:"آيس أمريكانو", en:"Iced Americano", price:"25"},
+    {ar:"آيس دالغونا", en:"Iced Dalgona", price:"30"},
+    {ar:"آيس دالغونا باللويزة", en:"Iced Verbena Dalgona", price:"30"},
+    {ar:"قهوة البرتقال", en:"Orange Coffee", price:"30"},
+  ]},
+  { id:"hotcoffee", ar:"قهوة ساخنة", en:"Hot Coffee", items:[
+    {ar:"إسبريسو", en:"Espresso", price:"14"},
+    {ar:"أمريكانو", en:"Americano", price:"22"},
+    {ar:"لاتيه", en:"Latte", price:"25"},
+    {ar:"لاتيه فانيلا", en:"Vanilla Latte", price:"30"},
+    {ar:"لاتيه كراميل", en:"Caramel Latte", price:"30"},
+    {ar:"كابتشينو", en:"Cappuccino", price:"25"},
+    {ar:"شوكو كوفي بالنوتيلا", en:"Hot Nutella Mocha", price:"35"},
+  ]},
+  { id:"fruitsalad", ar:"سلطة فواكه", en:"Fruit Salad", items:[
+    {ar:"سلطة استوائية", en:"Tropical Mix", price:"25"},
+    {ar:"سلطة التوت", en:"Berry Mix", price:"25"},
+    {ar:"سلطة الكيوي", en:"Kiwi Paradise", price:"25"},
+    {ar:"سلطة الأفوكادو", en:"Avocado Delight", price:"25"},
+    {ar:"سلطة فاكهة التنين", en:"Dragon Fruit Mix", price:"25"},
+  ]},
+];
+
+function dripPath(width, height, count){
+  const segW = width / count;
+  let d = `M0,0 L${width},0 `;
+  let bottom = "";
+  for(let i=count-1;i>=0;i--){
+    const x0 = i*segW, x1 = x0 + segW/2, x2 = x0 + segW;
+    const wobble = (Math.sin(i*2.1)+1)/2;
+    const len = height*0.4 + wobble*height*0.6;
+    bottom += `L${x2},0 C${x1+segW*0.12},${len} ${x1-segW*0.12},${len} ${x1},${len*0.98} C${x1-segW*0.28},${len} ${x0+segW*0.05},0 ${x0},0 `;
+  }
+  return d + bottom + "Z";
+}
+document.getElementById('heroDrip').setAttribute('d', dripPath(64,20,4));
+
+const toc = document.getElementById('toc');
+const menu = document.getElementById('menu');
+
+DATA.forEach((cat, idx)=>{
+  const a = document.createElement('a');
+  a.href = `#${cat.id}`;
+  a.textContent = cat.ar;
+  toc.appendChild(a);
+  if(idx < DATA.length-1){
+    const sep = document.createElement('span');
+    sep.className = 'sep'; sep.textContent = '•';
+    toc.appendChild(sep);
+  }
+
+  const section = document.createElement('section');
+  section.className = 'cat'; section.id = cat.id;
+
+  const head = document.createElement('div');
+  head.className = 'cat-head';
+  head.innerHTML = `
+    <span class="cat-ar">${cat.ar}</span>
+    <span class="cat-en">${cat.en}</span>
+    ${cat.note ? `<span class="cat-note">${cat.note}</span>` : ''}
+    <svg viewBox="0 0 46 18"><path fill="#8FD1C9"/></svg>
+  `;
+  section.appendChild(head);
+  head.querySelector('path').setAttribute('d', dripPath(46,14,3));
+
+  if(cat.customizable){
+    const baseRow = document.createElement('div');
+    baseRow.className = 'base-item';
+    baseRow.innerHTML = `
+      <div class="item-name"><span class="ar">${cat.base.ar}</span><span class="en">${cat.base.en}</span></div>
+      <div class="item-price">${cat.base.price}<span class="cur">DH</span></div>
+    `;
+    section.appendChild(baseRow);
+
+    const label = document.createElement('div');
+    label.className = 'topping-label';
+    label.textContent = cat.toppingsLabel;
+    section.appendChild(label);
+
+    const grid = document.createElement('div');
+    grid.className = 'toppings';
+    grid.style.gridTemplateRows = `repeat(${Math.ceil(cat.toppings.length/2)}, auto)`;
+    cat.toppings.forEach(t=>{
+      const row = document.createElement('div');
+      row.className = 'topping-row';
+      row.innerHTML = `<span class="ar">${t.ar}</span><span class="price">${t.price}</span>`;
+      grid.appendChild(row);
+    });
+    section.appendChild(grid);
+  } else {
+    cat.items.forEach(it=>{
+      const row = document.createElement('div');
+      row.className = 'item';
+      row.innerHTML = `
+        <div class="item-name"><span class="ar">${it.ar}</span><span class="en">${it.en}</span></div>
+        <div class="leader"></div>
+        <div class="item-price">${it.price}<span class="cur">DH</span></div>
+      `;
+      section.appendChild(row);
+    });
+  }
+  menu.appendChild(section);
+});
+
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{
+  toTop.classList.toggle('show', window.scrollY > 500);
+});
+</script>
+</body>
+</html>
