@@ -111,6 +111,22 @@
   }
   .item-price .cur{ font-size:0.62rem; font-style:normal; letter-spacing:1px; color:var(--ink-soft); margin-left:3px; }
 
+  /* mobile-only: turn photo rows into a 2-column card grid */
+  @media (max-width:640px){
+    .items-photo{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .items-photo .item{
+      flex-direction:column; align-items:stretch; gap:0; padding:0;
+      border-bottom:none; border-radius:16px; overflow:hidden;
+      background:var(--card-bg, #FBF6EC); box-shadow:0 2px 8px rgba(32,66,62,0.08);
+    }
+    .items-photo .item-thumb{ width:100%; height:auto; aspect-ratio:1/1; border-radius:0; }
+    .items-photo .item-name{ padding:8px 10px 0; }
+    .items-photo .item-name .ar{ font-size:0.92rem; text-align:right; }
+    .items-photo .item-name .en{ font-size:0.62rem; text-align:right; }
+    .items-photo .leader{ display:none; }
+    .items-photo .item-price{ padding:2px 10px 10px; align-self:flex-end; font-size:1rem; }
+  }
+
   /* base + toppings (waffle / fattoush) */
   .base-item{
     display:flex; align-items:flex-end; justify-content:space-between;
@@ -188,14 +204,14 @@ const DATA = [
     {ar:"قشطوطة لوتس", en:"Lotus Qashtouta", price:"39", img:"/images/qashtouta_milk_lotus.jpg"},
     {ar:"قشطوطة أوريو", en:"Oreo Qashtouta", price:"39", img:"/images/qashtouta_milk_oreo.jpg"},
     {ar:"قشطوطة مكسرات", en:"Nut Qashtouta", price:"44", img:"/images/qashtouta_milk_nut.jpg"},
-    {ar:"قشطوطة كراميل", en:"Caramel Qashtouta", price:"39"},
+    {ar:"قشطوطة كراميل", en:"Caramel Qashtouta", price:"39", img:"/images/qashtouta_milk_caramel.jpg"},
     {ar:"قشطوطة شوكولاتة", en:"Chocolate Qashtouta", price:"39", img:"/images/qashtouta_milk_chocolate.jpg"},
     {ar:"قشطوطة شوكولاتة دبي", en:"Dubai Chocolate Qashtouta", price:"44", img:"/images/qashtouta_milk_dubai_chocolate.jpg"},
-    {ar:"قشطوطة بالفستق", en:"Pistachio Qashtouta", price:"40"},
-    {ar:"قشطوطة شوكولاتة بيضاء", en:"White Chocolate Qashtouta", price:"39"},
-    {ar:"قشطوطة مع بوظة", en:"Ice Cream Qashtouta", price:"44"},
+    {ar:"قشطوطة بالفستق", en:"Pistachio Qashtouta", price:"40", img:"/images/qashtouta_milk_pistachio.jpg"},
+    {ar:"قشطوطة شوكولاتة بيضاء", en:"White Chocolate Qashtouta", price:"39", img:"/images/qashtouta_milk_white_chocolate.jpg"},
+    // {ar:"قشطوطة مع بوظة", en:"Ice Cream Qashtouta", price:"44"}, // not available yet
     {ar:"قشطوطة سبيشل", en:"Special Qashtouta", price:"48", img:"/images/qashtouta_milk_special.jpg"},
-    {ar:"قشطوطة بجوز الهند", en:"Coconut Qashtouta", price:"39"},
+    {ar:"قشطوطة بجوز الهند", en:"Coconut Qashtouta", price:"39", img:"/images/qashtouta_milk_coconut.jpg"},
     {ar:"قشطوطة بالمانجو", en:"Mango Qashtouta", price:"39", img:"/images/qashtouta_milk_mango.jpg"},
     {ar:"قشطوطة بالموز", en:"Banana Qashtouta", price:"39", img:"/images/qashtouta_milk_banana.jpg"},
     {ar:"قشطوطة بالكيوي", en:"Kiwi Qashtouta", price:"39", img:"/images/qashtouta_milk_kiwi.jpg"},
@@ -205,23 +221,25 @@ const DATA = [
     {ar:"قشطوطة خوخ", en:"Peach Qashtouta", price:"39", img:"/images/qashtouta_milk_peach.jpg"},
   ]},
   { id:"qashtouta-plain", ar:"قشطوطة سادة", en:"Plain Qashtouta", items:[
-    {ar:"قشطوطة", en:"Classic Qashtouta", price:"25"},
-    {ar:"قشطوطة لوتس", en:"Lotus Qashtouta", price:"34"},
-    {ar:"قشطوطة أوريو", en:"Oreo Qashtouta", price:"34"},
-    {ar:"قشطوطة مكسرات", en:"Nut Qashtouta", price:"39"},
-    {ar:"قشطوطة كراميل", en:"Caramel Qashtouta", price:"34"},
-    {ar:"قشطوطة شوكولاتة", en:"Chocolate Qashtouta", price:"34"},
-    {ar:"قشطوطة شوكولاتة دبي", en:"Dubai Chocolate Qashtouta", price:"39"},
-    {ar:"قشطوطة بالفستق", en:"Pistachio Qashtouta", price:"35"},
-    {ar:"قشطوطة شوكولاتة بيضاء", en:"White Chocolate Qashtouta", price:"34"},
-    {ar:"قشطوطة مع بوظة", en:"Ice Cream Qashtouta", price:"39"},
-    {ar:"قشطوطة سبيشل", en:"Special Qashtouta", price:"43"},
-    {ar:"قشطوطة بجوز الهند", en:"Coconut Qashtouta", price:"34"},
-    {ar:"قشطوطة بالمانجو", en:"Mango Qashtouta", price:"34"},
-    {ar:"قشطوطة بالموز", en:"Banana Qashtouta", price:"34"},
-    {ar:"قشطوطة بالكيوي", en:"Kiwi Qashtouta", price:"34"},
-    {ar:"قشطوطة بفاكهة التنين", en:"Dragon Fruit Qashtouta", price:"34"},
-    {ar:"قشطوطة ميكس فواكه", en:"Mixed Fruit Qashtouta", price:"40"},
+    {ar:"قشطوطة", en:"Classic Qashtouta", price:"25", img:"/images/qashtouta_milk_classic.jpg"},
+    {ar:"قشطوطة لوتس", en:"Lotus Qashtouta", price:"34", img:"/images/qashtouta_milk_lotus.jpg"},
+    {ar:"قشطوطة أوريو", en:"Oreo Qashtouta", price:"34", img:"/images/qashtouta_milk_oreo.jpg"},
+    {ar:"قشطوطة مكسرات", en:"Nut Qashtouta", price:"39", img:"/images/qashtouta_milk_nut.jpg"},
+    {ar:"قشطوطة كراميل", en:"Caramel Qashtouta", price:"34", img:"/images/qashtouta_milk_caramel.jpg"},
+    {ar:"قشطوطة شوكولاتة", en:"Chocolate Qashtouta", price:"34", img:"/images/qashtouta_milk_chocolate.jpg"},
+    {ar:"قشطوطة شوكولاتة دبي", en:"Dubai Chocolate Qashtouta", price:"39", img:"/images/qashtouta_milk_dubai_chocolate.jpg"},
+    {ar:"قشطوطة بالفستق", en:"Pistachio Qashtouta", price:"35", img:"/images/qashtouta_milk_pistachio.jpg"},
+    {ar:"قشطوطة شوكولاتة بيضاء", en:"White Chocolate Qashtouta", price:"34", img:"/images/qashtouta_milk_white_chocolate.jpg"},
+    // {ar:"قشطوطة مع بوظة", en:"Ice Cream Qashtouta", price:"39"}, // not available yet
+    {ar:"قشطوطة سبيشل", en:"Special Qashtouta", price:"43", img:"/images/qashtouta_milk_special.jpg"},
+    {ar:"قشطوطة بجوز الهند", en:"Coconut Qashtouta", price:"34", img:"/images/qashtouta_milk_coconut.jpg"},
+    {ar:"قشطوطة بالمانجو", en:"Mango Qashtouta", price:"34", img:"/images/qashtouta_milk_mango.jpg"},
+    {ar:"قشطوطة بالموز", en:"Banana Qashtouta", price:"34", img:"/images/qashtouta_milk_banana.jpg"},
+    {ar:"قشطوطة بالكيوي", en:"Kiwi Qashtouta", price:"34", img:"/images/qashtouta_milk_kiwi.jpg"},
+    {ar:"قشطوطة بفاكهة التنين", en:"Dragon Fruit Qashtouta", price:"34", img:"/images/qashtouta_milk_dragon_fruit.jpg"},
+    {ar:"قشطوطة ميكس فواكه", en:"Mixed Fruit Qashtouta", price:"40", img:"/images/qashtouta_milk_mixed_fruit.jpg"},
+    {ar:"قشطوطة أناناس", en:"Pineapple Qashtouta", price:"34", img:"/images/qashtouta_milk_pineapple.jpg"},
+    {ar:"قشطوطة خوخ", en:"Peach Qashtouta", price:"34", img:"/images/qashtouta_milk_peach.jpg"},
   ]},
   { id:"fattoush", ar:"فتوش", en:"Fattoush Cake", customizable:true,
     base:{ar:"فتوش", en:"Fattoush Cake", price:"18"},
@@ -371,6 +389,9 @@ DATA.forEach((cat, idx)=>{
     });
     section.appendChild(grid);
   } else {
+    const hasPhotos = cat.items.some(it => it.img);
+    const wrap = document.createElement('div');
+    wrap.className = hasPhotos ? 'items-photo' : '';
     cat.items.forEach(it=>{
       const row = document.createElement('div');
       row.className = 'item';
@@ -380,8 +401,9 @@ DATA.forEach((cat, idx)=>{
         <div class="leader"></div>
         <div class="item-price">${it.price}<span class="cur">DH</span></div>
       `;
-      section.appendChild(row);
+      wrap.appendChild(row);
     });
+    section.appendChild(wrap);
   }
   menu.appendChild(section);
 });
